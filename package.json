@@ -1,0 +1,21 @@
+{
+  "name": "discord-bot",
+  "version": "1.0.0",
+  "description": "A versatile Discord bot with advanced functionalities.",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js"
+  },
+  "author": "Dominic Hahn",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "yt-dlp-exec": "^1.0.0",
+    "path": "^0.12.7",
+    "fs": "^0.0.1-security",
+    "node-emoji": "^1.11.0",
+    "mysql2": "^3.2.0",
+    "dotenv": "^16.0.3",
+    "@discordjs/voice": "^0.18.0"
+  }
+}
