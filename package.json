@@ -17,5 +17,24 @@
     "mysql2": "^3.2.0",
     "dotenv": "^16.0.3",
     "@discordjs/voice": "^0.18.0"
-  }
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "discord-bot",
+    "music",
+    "moderation",
+    "discord-js",
+    "nodejs",
+    "voice",
+    "yt-dlp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DarkNinja-Lab/HappyManager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DarkNinja-Lab/HappyManager/issues"
+  },
+  "homepage": "https://github.com/DarkNinja-Lab/HappyManager#readme"
 }
