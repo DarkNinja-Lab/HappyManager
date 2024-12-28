@@ -1,16 +1,27 @@
 # 🎉 Discord Bot
 
-Ein vielseitiger **Discord Bot**, der verschiedene Funktionen bietet, um deinen Server lebendig und interaktiv zu halten. Von **Willkommensnachrichten** bis hin zu **Reaktionsrollen** und **emotionaler Unterstützung** – dieser Bot sorgt dafür, dass deine Community sich willkommen und engagiert fühlt.
+Ein vielseitiger **Discord Bot**, der verschiedene Funktionen bietet, um deinen Server lebendig und interaktiv zu halten. Von **Willkommensnachrichten** bis hin zu **Reaktionsrollen** und **mini Games** – dieser Bot sorgt dafür, dass deine Community sich willkommen und engagiert fühlt.
 
 ---
 
-## 🚀 Features
+## 🚀 Aktuelle Features
 
 - **Willkommensnachrichten**: Sende eine zufällige Nachricht, wenn ein neues Mitglied beitritt.
 - **Reaktionsrollen**: Vergib Rollen basierend auf Reaktionen auf bestimmte Nachrichten.
-- **Emotionale Unterstützung**: Reagiere auf traurige, lustlose oder motivierende Nachrichten.
-- **Feierliche Antworten**: Feiere besondere Momente wie Geburtstagswünsche und Feierabend.
-- **Interaktive Antworten**: Lustige und hilfsbereite Antworten auf allgemeine Fragen.
+- **Hilfe Menüs**: Bietet eine übersichtliche Anleitung für alle verfügbaren Befehle und Funktionen.
+- **Musik Bot**: Spielt Musik direkt auf dem Server ab und bietet Features wie Queue, Skip, Stop.
+- **Reward System**: Belohnt Mitglieder für ihre Aktivität mit Punkten, Rängen oder anderen Anreizen.
+- **Clear Messages**: rmöglicht das schnelle Löschen von Nachrichten, um Chats sauber zu halten.
+- **Server Logging**: Protokolliert wichtige Ereignisse und Aktivitäten auf dem Server für Übersicht und Sicherheit.
+- **Server Feedback**: Ermöglicht es Mitgliedern, Feedback zu geben, um den Server zu verbessern.
+
+
+## 🚀 Geplante Features
+- **mini Games**: Count 1 - Unendlich mit Leaderboard bzw ShameTag.
+- **Bump Reminder**: Bump Reminder für Disboard.
+- **Moderation**: Automatische Moderation (z. B. für Spam, Links oder toxische Sprache), Befehle zum Stummschalten, Kicken, Bannen und Verwarnen.
+- **Kreativität**: AI-generierte Bilder oder Texte.
+
 
 ---
 
@@ -22,41 +33,47 @@ Ein vielseitiger **Discord Bot**, der verschiedene Funktionen bietet, um deinen 
 - Eine Discord-Bot-Token
 - Eine MySQL-Datenbank (oder eine kompatible SQL-Datenbank)
 
+---
 ### Schritte zur Installation
 
 1. **Repository klonen:** ```git clone https://github.com/DarkNinja-Lab/Happy-Manager.git```
 
 2. **Ins Verzeichniss** ```cd Happy-Manager```
 
+3. **Abhängigkeiten installieren**: ```npm install```
 
+4. Umgebungsvariablen einrichten: Erstelle eine .env-Datei im Projektordner und füge dein Bot-Token sowie andere Konfigurationen hinzu:
 
-### Abhängigkeiten installieren:
-
-```npm install```
-
-Umgebungsvariablen einrichten: Erstelle eine .env-Datei im Projektordner und füge dein Bot-Token sowie andere Konfigurationen hinzu:
-
-
-```DISCORD_TOKEN=dein-bot-token
-DB_HOST=localhost
-DB_USER=dein-benutzername
-DB_PASSWORD=dein-passwort
-DB_NAME=deine-datenbank
 ```
-Bot starten:
+# Discord Bot Credentials
+DISCORD_TOKEN=CHANGEMENOW
+DISCORD_APPLICATION_ID=CHANGEMENOW
 
-```npm start```
+# Dashboard Configuration
+DISCORD_CLIENT_ID=CHANGEMENOW
+DISCORD_CLIENT_SECRET=CHANGEMENOW
+DISCORD_CALLBACK_URL=http://localhost/auth/callback
+PORT=80
 
-### ⚙️ Konfiguration
+# Session Secret for Dashboard
+SESSION_SECRET=CHANGEMENOW
 
-**Willkommensnachrichten:** Du kannst die Willkommensnachrichten in der ```guildMemberAdd.js``` anpassen.
-**Reaktionsrollen:** Stelle sicher, dass du die Reaktionsrollen in der ```Datenbank``` konfigurierst. Die Konfiguration erfolgt über den Befehl !reactionrole.
+# Database Configuration
+DB_HOST=CHANGEMENOW
+DB_USER=CHANGEMENOW
+DB_PASS=CHANGEMENOW
+DB_NAME=discord
+DB_PORT=3306
 
-🤖 Befehle
+```
+
+5. Bot starten: ```npm start```
+---
+### 🤖 Befehle
 
 - ```!reactionrole:``` Erstellt eine Nachricht, auf die Benutzer mit Emojis reagieren können, um eine Rolle zu erhalten.
 - ```!setWelcomeChannel:``` Setze den Kanal, in dem neue Mitglieder begrüßt werden.
-
+---
 
 ### 🛠️ Unterstützte Events
 
@@ -67,7 +84,7 @@ Bot starten:
 - ready: Der Bot ist bereit und läuft.
 - processExistingReactions: Verarbeitet bestehende Reaktionen beim Start des Bots.
 
-
+---
 ### 💡 Weiterführende Links
 
 - [Discord Developers](https://discord.com/developers/applications)

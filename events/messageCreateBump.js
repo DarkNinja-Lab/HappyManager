@@ -50,28 +50,38 @@ module.exports = {
                         }
 
                         // Sende eine Nachricht, dass der Timer gestartet wurde
-                        const channel = await client.channels.fetch(channel_id);
-                        if (channel) {
-                            await channel.send({
-                                embeds: [{
-                                    title: '⏰ Bump-Timer gestartet!',
-                                    description: 'Ich erinnere euch in **2 Stunden** ⏳, den Server erneut zu bumpen! 🚀',
-                                    color: 0x00bfff, // Blau
-                                    footer: { text: '🤖 Disboard Bump Reminder' },
-                                }],
-                            });
-                            console.log(`🔔 Benachrichtigung über gestarteten Timer an Kanal ${channel_id} gesendet.`);
-                        } else {
-                            console.log(`⚠️ Kanal ${channel_id} für Guild ${guildId} nicht gefunden.`);
+                        let channel;
+                        try {
+                            channel = await client.channels.fetch(channel_id);
+                            if (!channel) {
+                                console.log(`⚠️ Kanal mit ID ${channel_id} konnte nicht gefunden werden.`);
+                                return;
+                            }
+                        } catch (error) {
+                            console.error(`❌ Fehler beim Abrufen des Kanals mit ID ${channel_id}:`, error);
                             return;
                         }
+
+                        await channel.send({
+                            embeds: [{
+                                title: '⏰ Bump-Timer gestartet!',
+                                description: 'Ich erinnere euch in **2 Stunden** ⏳, den Server erneut zu bumpen! 🚀',
+                                color: 0x00bfff, // Blau
+                                footer: { text: '🤖 Disboard Bump Reminder' },
+                            }],
+                        });
+                        console.log(`🔔 Benachrichtigung über gestarteten Timer an Kanal ${channel_id} gesendet.`);
 
                         // Starte den Timer (2 Stunden)
                         setTimeout(async () => {
                             try {
                                 const role = await message.guild.roles.fetch(role_id);
+                                if (!role) {
+                                    console.log(`⚠️ Rolle mit ID ${role_id} konnte nicht gefunden werden.`);
+                                    return;
+                                }
 
-                                if (channel && role) {
+                                if (channel) {
                                     await channel.send({
                                         content: `⏰ ${role}, es ist Zeit, den Server erneut zu bumpen! 🚀 Verwende \`/bump\` mit dem Disboard-Bot. 💬`,
                                         embeds: [{
@@ -83,7 +93,7 @@ module.exports = {
                                     });
                                     console.log(`✅ Bump-Reminder für Guild ${guildId} gesendet.`);
                                 } else {
-                                    console.log(`⚠️ Kanal oder Rolle für Guild ${guildId} nicht gefunden.`);
+                                    console.log(`⚠️ Kanal für Guild ${guildId} nicht gefunden.`);
                                 }
                             } catch (error) {
                                 console.error(`❌ Fehler beim Senden des Bump-Reminders für Guild ${guildId}:`, error);
@@ -93,6 +103,10 @@ module.exports = {
                         console.log(`🕒 Bump-Timer für Guild ${guildId} gestartet.`);
                     } catch (error) {
                         console.error(`❌ Fehler beim Aktualisieren des letzten Bump-Zeitpunkts für Guild ${guildId}:`, error);
+                        console.log(`➡️ Details:
+                        - Guild ID: ${guildId}
+                        - Channel ID: ${channel_id || 'Nicht definiert'}
+                        - Role ID: ${role_id || 'Nicht definiert'}`);
                     }
                 }
             }
